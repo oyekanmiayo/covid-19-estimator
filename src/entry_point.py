@@ -1,4 +1,5 @@
-from flask import Flask, request, jsonify
+from simplexml import dumps
+from flask import Flask, request, jsonify, make_response
 from estimator import estimator
 
 app = Flask(__name__)
@@ -11,12 +12,13 @@ def get_estimation_json():
     req_data = request.get_json()
     response = estimator(req_data)
     return jsonify(response)
-    #return jsonify(req_data)
 
 
 @app.route('/api/v1/on-covid-19/xml', methods=['POST'])
 def get_estimation_xml():
-    pass
+    req_data = request.get_json()
+    response = dumps({'response': estimator(req_data)})
+    return response
 
 
 app.run()
