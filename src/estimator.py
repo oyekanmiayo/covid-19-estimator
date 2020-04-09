@@ -68,12 +68,12 @@ def get_dollars_in_flight(data, output):
     days = get_days(data['periodType'], data['timeToElapse'])
 
     impact_infections = output['impact']['infectionsByRequestedTime']
-    output['impact']['dollarsInFlight'] = round(impact_infections * population_perc * population_inc * days, 2)
+    output['impact']['dollarsInFlight'] = \
+        round((impact_infections * population_perc * population_inc) / days, 2)
 
     s_impact_infections = output['severeImpact']['infectionsByRequestedTime']
-    output['severeImpact']['dollarsInFlight'] = round(s_impact_infections * population_perc * population_inc * days, 2)
-
-    pass
+    output['severeImpact']['dollarsInFlight'] = \
+        round((s_impact_infections * population_perc * population_inc) / days, 2)
 
 
 def build_estimation_output(data):
