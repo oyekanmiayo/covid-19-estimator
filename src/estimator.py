@@ -18,10 +18,10 @@ def get_currently_infected_people(data, output):
 def get_infections_by_requested_time(data, output):
     days = get_days(data['periodType'], data['timeToElapse'])
     output['impact']['infectionsByRequestedTime'] = \
-        output['impact']['currentlyInfected'] * (2 ** int(days / 3))
+        int(output['impact']['currentlyInfected'] * (2 ** int(days / 3)))
 
     output['severeImpact']['infectionsByRequestedTime'] = \
-        output['severeImpact']['currentlyInfected'] * (2 ** int(days / 3))
+        int(output['severeImpact']['currentlyInfected'] * (2 ** int(days / 3)))
 
 
 def get_severe_cases_by_requested_time(output):
@@ -35,10 +35,6 @@ def get_severe_cases_by_requested_time(output):
 def get_hospital_beds_by_requested_time(data, output):
     available_beds = 0.35 * data['totalHospitalBeds']
 
-    # bed is more, then we have less
-    # if beds
-    # 3000 1500 = 1500
-    # 1000 3000 = -2000
     impact_severe_cases = output['impact']['severeCasesByRequestedTime']
     output['impact']['hospitalBedsByRequestedTime'] = int(available_beds - impact_severe_cases)
 
@@ -69,11 +65,11 @@ def get_dollars_in_flight(data, output):
 
     impact_infections = output['impact']['infectionsByRequestedTime']
     output['impact']['dollarsInFlight'] = \
-        round((impact_infections * population_perc * population_inc) / days, 2)
+        int((impact_infections * population_perc * population_inc) / days)
 
     s_impact_infections = output['severeImpact']['infectionsByRequestedTime']
     output['severeImpact']['dollarsInFlight'] = \
-        round((s_impact_infections * population_perc * population_inc) / days, 2)
+        int((s_impact_infections * population_perc * population_inc) / days)
 
 
 def build_estimation_output(data):
