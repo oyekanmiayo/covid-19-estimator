@@ -25,6 +25,11 @@ def after_req(response):
     return response
 
 
+@app.route('/')
+def home():
+    return "Hello, Word"
+
+
 @app.route('/api/v1/on-covid-19', methods=['POST'])
 def get_estimation_default():
     req_data = request.get_json()
