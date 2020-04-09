@@ -35,13 +35,15 @@ def get_severe_cases_by_requested_time(output):
 def get_hospital_beds_by_requested_time(data, output):
     available_beds = 0.35 * data['totalHospitalBeds']
 
+    # bed is more, then we have less
+    # if beds
+    # 3000 1500 = 1500
+    # 1000 3000 = -2000
     impact_severe_cases = output['impact']['severeCasesByRequestedTime']
-    output['impact']['hospitalBedsByRequestedTime'] = available_beds \
-        if available_beds >= impact_severe_cases else int(available_beds - impact_severe_cases)
+    output['impact']['hospitalBedsByRequestedTime'] = int(available_beds - impact_severe_cases)
 
     s_impact_severe_cases = output['severeImpact']['severeCasesByRequestedTime']
-    output['severeImpact']['hospitalBedsByRequestedTime'] = available_beds \
-        if available_beds >= s_impact_severe_cases else int(available_beds - s_impact_severe_cases)
+    output['severeImpact']['hospitalBedsByRequestedTime'] = int(available_beds - s_impact_severe_cases)
 
 
 def get_cases_for_icu_by_requested_time(output):
