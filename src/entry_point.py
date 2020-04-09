@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from src.estimator import estimator
+from estimator import estimator
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -11,6 +11,7 @@ def get_estimation_json():
     req_data = request.get_json()
     response = estimator(req_data)
     return jsonify(response)
+    #return jsonify(req_data)
 
 
 @app.route('/api/v1/on-covid-19/xml', methods=['POST'])

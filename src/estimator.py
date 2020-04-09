@@ -16,7 +16,7 @@ def get_currently_infected_people(data, output):
 
 
 def get_infections_by_requested_time(data, output):
-    days = get_days(data['periodType'], data['timeElapsed'])
+    days = get_days(data['periodType'], data['timeToElapse'])
     output['impact']['infectionsByRequestedTime'] = \
         output['impact']['currentlyInfected'] * (2 ** int(days / 3))
 
@@ -63,7 +63,7 @@ def get_cases_for_ventilators_by_requested_time(output):
 def get_dollars_in_flight(data, output):
     population_perc = data['region']['avgDailyIncomePopulation']
     population_inc = data['region']['avgDailyIncomeInUSD']
-    days = get_days(data['periodType'], data['timeElapsed'])
+    days = get_days(data['periodType'], data['timeToElapse'])
 
     impact_infections = output['impact']['infectionsByRequestedTime']
     output['impact']['dollarsInFlight'] = impact_infections * population_perc * population_inc * days
