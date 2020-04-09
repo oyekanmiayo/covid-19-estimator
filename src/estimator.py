@@ -33,7 +33,7 @@ def get_severe_cases_by_requested_time(output):
 
 
 def get_hospital_beds_by_requested_time(data, output):
-    available_beds = 0.35 * data['totalHospitalBeds']
+    available_beds = float(0.35 * data['totalHospitalBeds'])
 
     impact_severe_cases = output['impact']['severeCasesByRequestedTime']
     output['impact']['hospitalBedsByRequestedTime'] = available_beds \
