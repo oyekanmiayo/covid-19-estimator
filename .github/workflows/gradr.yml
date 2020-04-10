@@ -290,7 +290,7 @@ jobs:
     - name: Run Audits
       run: |
         yarn install
-        npx jest audits/ch-5 --json --outputFile=audits/ch-5.json --noStackTrace
+        npx jest audits/ch-5 --json --outputFile=audits/ch-5.json --noStackTrace --passWithNoTests
 
     - name: Report Audits
       uses: ./.github/actions/jest-out
