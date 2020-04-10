@@ -1,6 +1,6 @@
 from simplexml import dumps
 from flask import Flask, request, jsonify, g
-from estimator import estimator
+from src.estimator import estimator
 import time
 
 app = Flask(__name__)
