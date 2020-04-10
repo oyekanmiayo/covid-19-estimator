@@ -57,4 +57,4 @@ def get_logs():
     return contents
 
 
-app.run()
+# app.run()
