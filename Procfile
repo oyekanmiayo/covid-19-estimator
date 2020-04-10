@@ -1,1 +1,1 @@
-web: python src/entry_point.py
+web: gunicorn src:entry_point
