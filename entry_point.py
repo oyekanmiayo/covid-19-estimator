@@ -44,7 +44,7 @@ def get_estimation_json():
 @app.route('/api/v1/on-covid-19/xml', methods=['POST'])
 def get_estimation_xml():
     req_data = request.get_json()
-    res = dumps({'response': estimator(req_data)})
+    res = dumps({'root': estimator(req_data)})
     return res
 
 
