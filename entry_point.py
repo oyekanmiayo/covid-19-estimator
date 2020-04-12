@@ -1,5 +1,6 @@
-from simplexml import dumps
-from flask import Flask, request, jsonify, g
+from simplexml import dumps, element_from_dict
+from dicttoxml import dicttoxml
+from flask import Flask, request, jsonify, g, Response, make_response
 from src.estimator import estimator
 import time
 
@@ -44,8 +45,13 @@ def get_estimation_json():
 @app.route('/api/v1/on-covid-19/xml', methods=['POST'])
 def get_estimation_xml():
     req_data = request.get_json()
+
+    # res = dicttoxml(estimator(req_data), attr_type=False)
+    # res = estimator(req_data)
     res = dumps({'root': estimator(req_data)})
-    return res
+    r = make_response(res)
+    r.headers['Content-type'] = 'application/xml'
+    return r
 
 
 @app.route('/api/v1/on-covid-19/logs', methods=['GET'])
