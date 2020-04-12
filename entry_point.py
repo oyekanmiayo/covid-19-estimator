@@ -46,9 +46,9 @@ def get_estimation_json():
 def get_estimation_xml():
     req_data = request.get_json()
 
-    # res = dicttoxml(estimator(req_data), attr_type=False)
+    res = dicttoxml(estimator(req_data), attr_type=False)
     # res = estimator(req_data)
-    res = dumps({'root': estimator(req_data)})
+    # res = dumps({'root': estimator(req_data)})
     r = make_response(res)
     r.headers["content-type"] = "application/xml"
     return r
