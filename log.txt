@@ -20,3 +20,8 @@ POST 		 /api/v1/on-covid-19/xml 		 200 		 21 ms
 POST 		 /api/v1/on-covid-19/xml 		 200 		 1 ms 
 POST 		 /api/v1/on-covid-19/xml 		 200 		 4 ms 
 POST 		 /api/v1/on-covid-19/xml 		 200 		 4 ms 
+POST 		 /api/v1/on-covid-19/xml 		 200 		 5 ms 
+POST 		 /api/v1/on-covid-19 		 200 		 11 ms 
+POST 		 /api/v1/on-covid-19/xml 		 200 		 2 ms 
+POST 		 /api/v1/on-covid-19 		 200 		 3 ms 
+POST 		 /api/v1/on-covid-19/xml 		 200 		 3 ms 
