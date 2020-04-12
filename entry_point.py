@@ -50,7 +50,7 @@ def get_estimation_xml():
     # res = estimator(req_data)
     res = dumps({'root': estimator(req_data)})
     r = make_response(res)
-    r.headers["Content-type"] = "application/xml"
+    r.headers["content-type"] = "application/xml"
     return r
 
 
