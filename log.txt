@@ -45,3 +45,6 @@ GET	/api/v1/on-covid-19/xml	200	014ms
 GET	/api/v1/on-covid-19/xml	201	06ms
 GET	/api/v1/on-covid-19/xml	200	07ms
 GET	/api/v1/on-covid-19/xml	200	05ms
+GET	/api/v1/on-covid-19/xml	200	06ms
+GET	/api/v1/on-covid-19/xml	200	00ms
+POST	/api/v1/on-covid-19/xml	200	06ms

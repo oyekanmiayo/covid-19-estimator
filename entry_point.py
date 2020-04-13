@@ -47,7 +47,7 @@ def get_estimation_xml():
     if request.method == 'POST':
         req_data = request.get_json()
 
-        res = dicttoxml(estimator(req_data), attr_type=False)
+        res = dicttoxml(estimator(req_data), attr_type=False, root=False)
         # res = estimator(req_data)
         # res = dumps({'root': estimator(req_data)})
     else:
