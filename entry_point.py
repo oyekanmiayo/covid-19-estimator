@@ -14,15 +14,18 @@ def before_req():
 
 @app.after_request
 def after_req(response):
-    f = open('log.txt', 'a+')
-    req_method = request.method
-    req_path = request.path
-    res_time = int(time.time() * 1000 - g.start)
-    res_status_code = response.status_code
+    if request.path == '/robots.txt' or request.path == '/favicon.ico':
+        pass
+    else:
+        f = open('log.txt', 'a+')
+        req_method = request.method
+        req_path = request.path
+        res_time = int(time.time() * 1000 - g.start)
+        res_status_code = response.status_code
 
-    f.write("{}\t{}\t{}\t0{}ms\n".format(req_method, req_path, res_status_code, res_time))
-    f.close()
-    return response
+        f.write("{}\t{}\t{}\t0{}ms\n".format(req_method, req_path, res_status_code, res_time))
+        f.close()
+        return response
 
 
 @app.route('/')
@@ -66,7 +69,7 @@ def get_logs():
     f.close()
     r = make_response(contents)
     r.headers["Content-Type"] = "text/plain; charset=utf-8"
-    return contents
+    return r
 
 
 if __name__ == '__main__':
