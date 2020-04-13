@@ -56,7 +56,7 @@ def get_estimation_xml():
 
     r = make_response(res)
     r.headers["Content-Type"] = "application/xml; charset=utf-8"
-    return r
+    return r, 200
 
 
 @app.route('/api/v1/on-covid-19/logs', methods=['GET'])
