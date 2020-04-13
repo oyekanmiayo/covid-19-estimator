@@ -31,3 +31,5 @@ GET 		 /robots.txt 		 404 		 10 ms
 GET 		 /favicon.ico 		 404 		 0 ms 
 GET 		 /api/v1/on-covid-19/xml 		 405 		 0 ms 
 POST 		 /api/v1/on-covid-19/xml 		 200 		 17 ms 
+GET 		 /api/v1/on-covid-19/xml 		 200 		 12 ms 
+GET 		 /api/v1/on-covid-19/xml 		 200 		 4 ms 

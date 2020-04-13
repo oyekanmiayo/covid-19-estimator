@@ -42,13 +42,14 @@ def get_estimation_json():
     return get_estimation_default()
 
 
-@app.route('/api/v1/on-covid-19/xml', methods=['POST'])
+@app.route('/api/v1/on-covid-19/xml', methods=['POST', 'GET'])
 def get_estimation_xml():
     req_data = request.get_json()
 
     res = dicttoxml(estimator(req_data), attr_type=False)
     # res = estimator(req_data)
     # res = dumps({'root': estimator(req_data)})
+
     r = make_response(res)
     r.headers["Content-Type"] = "application/xml; charset=utf-8"
     return r
