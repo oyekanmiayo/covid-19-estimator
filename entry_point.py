@@ -55,8 +55,8 @@ def get_estimation_xml():
         res = dicttoxml(res_dict, attr_type=False)
 
     r = make_response(res)
-    r.headers["Content-Type"] = "application/xml; charset=utf-8"
-    return r, 200
+    # r.headers["Content-Type"] = "application/xml; charset=utf-8"
+    return r, 200, {'Content-Type': 'application/xml'}
 
 
 @app.route('/api/v1/on-covid-19/logs', methods=['GET'])
