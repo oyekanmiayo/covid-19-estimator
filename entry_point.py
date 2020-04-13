@@ -20,7 +20,7 @@ def after_req(response):
     res_time = int(time.time() * 1000 - g.start)
     res_status_code = response.status_code
 
-    f.write("{} \t\t {} \t\t {} \t\t 0{}ms \n".format(req_method, req_path, res_status_code, res_time))
+    f.write("{}\t{}\t{}\t0{}ms\n".format(req_method, req_path, res_status_code, res_time))
     f.close()
     return response
 
