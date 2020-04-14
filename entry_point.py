@@ -2,6 +2,8 @@ from simplexml import dumps, element_from_dict
 from dicttoxml import dicttoxml
 from flask import Flask, request, jsonify, g, Response, make_response
 from src.estimator import estimator
+from json2xml import json2xml
+from json2xml.utils import readfromurl, readfromstring, readfromjson
 import time
 
 app = Flask(__name__)
@@ -49,8 +51,7 @@ def get_estimation_json():
 def get_estimation_xml():
     if request.method == 'POST':
         req_data = request.get_json()
-
-        res = dicttoxml(estimator(req_data), attr_type=False, root=False)
+        res = dicttoxml(estimator(req_data), attr_type=False)
         # res = estimator(req_data)
         # res = dumps({'root': estimator(req_data)})
     else:
@@ -58,8 +59,8 @@ def get_estimation_xml():
         res = dicttoxml(res_dict, attr_type=False)
 
     r = make_response(res)
-    # r.headers["Content-Type"] = "application/xml; charset=utf-8"
-    return r, 200, {'Content-Type': 'application/xml'}
+    r.headers["Content-Type"] = "application/xml; charset=utf-8"
+    return r, 200, {"Content-Type": "application/xml"}
 
 
 @app.route('/api/v1/on-covid-19/logs', methods=['GET'])
@@ -69,7 +70,7 @@ def get_logs():
     f.close()
     r = make_response(contents)
     r.headers["Content-Type"] = "text/plain; charset=utf-8"
-    return r
+    return r, 200, {"Content-Type": "text/plain"}
 
 
 if __name__ == '__main__':
